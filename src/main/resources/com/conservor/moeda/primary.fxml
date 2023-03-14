@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="413.0" style="-fx-background-color: #101026;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.conservor.moeda.PrimaryController">
    <children>
       <HBox layoutX="29.0" layoutY="1.0" prefHeight="102.0" prefWidth="413.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -20,7 +19,7 @@
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
          <children>
-            <VBox prefHeight="200.0" prefWidth="113.0">
+            <VBox prefHeight="200.0" prefWidth="113.0" spacing="10.0">
                <children>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -64,7 +63,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="113.0">
+            <VBox prefHeight="200.0" prefWidth="113.0" spacing="10.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -90,7 +89,7 @@
                   </Button>
                </children>
             </VBox>
-            <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="113.0">
+            <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="113.0" spacing="10.0">
                <children>
                   <Label fx:id="labelInfoConvert" alignment="TOP_RIGHT" prefHeight="36.0" prefWidth="113.0" text="1 BRL TO USD" textFill="WHITE" wrapText="true">
                      <font>

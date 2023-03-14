@@ -1,10 +1,13 @@
 package com.conservor.moeda;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.StageStyle;
 
 public class PrimaryController {
 
@@ -26,18 +29,23 @@ public class PrimaryController {
     private String fromCoin;
     private String toCoin;
 
+    Alert a;
+
     @FXML
     void handleConvertCoin(MouseEvent event) {
         if (fromCoin == null || toCoin == null) {
-            System.out.println("Entrou como null");
+            a.setContentText("Por favor informe todas as moedas");
+            a.show();
             return;
         }
         if (inputQtd.getText().matches("^[a-zA-Z]*")) {
-            System.out.println("Entrou com texto");
+            a.setContentText("Entre somente com números!");
+            a.show();
             return;
         }
         if (fromCoin.equals(toCoin)) {
-            System.out.println("Moedas iguais!");
+            a.setContentText("As moedas não podem ser iguais!");
+            a.show();
             return;
         }
         labelInfoConvert.setText(inputQtd.getText() + " " + fromCoin + " TO " + toCoin);
@@ -110,6 +118,10 @@ public class PrimaryController {
 
     @FXML
     void initialize() {
+        a = new Alert(AlertType.ERROR);
+        a.initStyle(StageStyle.UTILITY);
+        a.setTitle("Error");
+
         labelInfoConvert.setText("");
         labelInfoResult.setText(String.format("%.2f", 0.00));
 
