@@ -1,5 +1,7 @@
 package com.conservor.moeda;
 
+import com.conservor.moeda.service.CambioService;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -32,7 +34,7 @@ public class PrimaryController {
     Alert a;
 
     @FXML
-    void handleConvertCoin(MouseEvent event) {
+    void handleConvertCoin(MouseEvent event) throws NumberFormatException, Exception {
         if (fromCoin == null || toCoin == null) {
             a.setContentText("Por favor informe todas as moedas");
             a.show();
@@ -53,66 +55,68 @@ public class PrimaryController {
         inputQtd.setText("");
     }
 
-    private void convert(double valor, String from, String to) {
-        Double result = 0.00;
-        switch (from) {
-            case "USD":
-                if (to.equals("EUR")) {
-                    result = valor * 0.93;
-                    break;
-                }
-                if (to.equals("BRL")) {
-                    result = valor * 5.21;
-                    break;
-                }
-                if (to.equals("ARS")) {
-                    result = valor * 200.73;
-                    break;
-                }
-                break;
-            case "EUR":
-                if (to.equals("USD")) {
-                    result = valor * 1.07;
-                    break;
-                }
-                if (to.equals("BRL")) {
-                    result = valor * 5.55;
-                    break;
-                }
-                if (to.equals("ARS")) {
-                    result = valor * 213.57;
-                    break;
-                }
-                break;
-            case "BRL":
-                if (to.equals("USD")) {
-                    result = valor * 0.19;
-                    break;
-                }
-                if (to.equals("EUR")) {
-                    result = valor * 0.18;
-                    break;
-                }
-                if (to.equals("ARS")) {
-                    result = valor * 38.47;
-                    break;
-                }
-                break;
-            case "ARS":
-                if (to.equals("USD")) {
-                    result = valor * 0.005;
-                    break;
-                }
-                if (to.equals("EUR")) {
-                    result = valor * 0.0046;
-                    break;
-                }
-                if (to.equals("BRL")) {
-                    result = valor * 0.026;
-                    break;
-                }
-                break;
-        }
+    private void convert(double valor, String from, String to) throws Exception {
+        String coin = from + "-" + to;
+        Double result = valor * CambioService.cambio(coin);
+
+        // switch (from) {
+        // case "USD":
+        // if (to.equals("EUR")) {
+        // result = valor * 0.93;
+        // break;
+        // }
+        // if (to.equals("BRL")) {
+        // result = valor * 5.21;
+        // break;
+        // }
+        // if (to.equals("ARS")) {
+        // result = valor * 200.73;
+        // break;
+        // }
+        // break;
+        // case "EUR":
+        // if (to.equals("USD")) {
+        // result = valor * 1.07;
+        // break;
+        // }
+        // if (to.equals("BRL")) {
+        // result = valor * 5.55;
+        // break;
+        // }
+        // if (to.equals("ARS")) {
+        // result = valor * 213.57;
+        // break;
+        // }
+        // break;
+        // case "BRL":
+        // if (to.equals("USD")) {
+        // result = valor * 0.19;
+        // break;
+        // }
+        // if (to.equals("EUR")) {
+        // result = valor * 0.18;
+        // break;
+        // }
+        // if (to.equals("ARS")) {
+        // result = valor * 38.47;
+        // break;
+        // }
+        // break;
+        // case "ARS":
+        // if (to.equals("USD")) {
+        // result = valor * 0.005;
+        // break;
+        // }
+        // if (to.equals("EUR")) {
+        // result = valor * 0.0046;
+        // break;
+        // }
+        // if (to.equals("BRL")) {
+        // result = valor * 0.026;
+        // break;
+        // }
+        // break;
+        // }
         labelInfoResult.setText(String.format("%.2f", result));
     }
 
